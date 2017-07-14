@@ -1,7 +1,5 @@
-const beers = ( state = [], action) => {
+const brewery = ( state = [], action) => {
   switch (action.type) {
-    case 'SET_ALL_BEERS':
-      return action.data
     case 'SET_BY_BREWERY':
       return action.data
     default:
@@ -9,4 +7,4 @@ const beers = ( state = [], action) => {
   }
 }
 
-export default beers
+export default brewery

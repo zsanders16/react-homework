@@ -1,24 +1,24 @@
 import React from 'react'
 import { Grid, Card, Button, Popup } from 'semantic-ui-react'
 
-class SingleBeer extends React.Component {
+class SingleBrewery extends React.Component {
   render(){
-    let { beer } = this.props
+    let { brewery } = this.props
     return(
       <Grid.Column>
       <Card style={{margin: '15px'}}>
       <Card.Content>
         <Card.Header style={{height: '50px'}}>
-          {beer.name}
+          {brewery.name}
         </Card.Header>
         <Card.Description style={{height: '50px'}}>
-          {beer.website}
+          {brewery.website}
         </Card.Description>
       </Card.Content>
       <Card.Content extra>
         <Popup
           trigger={<Button>Brewery Description</Button>}
-          content={beer.description}
+          content={brewery.description}
           basic
         />
 
@@ -29,4 +29,4 @@ class SingleBeer extends React.Component {
   }
 }
 
-export default SingleBeer;
+export default SingleBrewery;
