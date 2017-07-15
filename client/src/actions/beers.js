@@ -1,10 +1,12 @@
 import axios from 'axios'
 
-export const getAllBeers = () => {
+export const getAllBeers = (page = 1) => {
   return (dispatch) => {
-    axios.get('/api/all_beers')
+    axios.get('/api/all_beers?per_page=9?page=1')
       .then( (res) => {
-        dispatch( {type: 'SET_ALL_BEERS', data: res.data } )
+        const { data: beers } = res;
+        const totalPages = Math.ceil( beers.total_pages / beers.per_page)
+        dispatch( {type: 'SET_ALL_BEERS', data: beers.entries, pagination: { totalPages }} )
       })
   }
 }

@@ -1,9 +1,7 @@
-const beers = ( state = [], action) => {
+const beers = ( state = { data: [], pagination: {} }, action) => {
   switch (action.type) {
     case 'SET_ALL_BEERS':
-      return action.data
-    case 'SET_BY_BREWERY':
-      return action.data
+      return { data: [...state.data, ...action.data], pagination: action.pagination }
     default:
       return state
   }

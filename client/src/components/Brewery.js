@@ -1,30 +1,31 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { getAllBeers } from '../actions/beers'
-import SingleBeer from './SingleBeer'
+import { getAllBreweries } from '../actions/brewery'
+import SingleBrewery from './SingleBrewery'
 import { Container, Grid } from 'semantic-ui-react'
 import InfiniteScroll from 'react-infinite-scroller';
 
-class Beers extends React.Component {
-  state = { hasMore: true}
+class Brewery extends React.Component {
+  state = { hasMore: true }
 
   componentDidMount() {
-    if(!this.props.beer.data.length){
-      this.props.dispatch(getAllBeers())
+    if(!this.props.brewery.data.length){
+      this.props.dispatch(getAllBreweries())
     }
   }
 
-  displayBeers = () => {
-    return this.props.beer.data.map( (beer, i) => {
-      return(<SingleBeer key={i} beer={beer} />)
+
+  displayBrewery = () => {
+    return this.props.brewery.data.map( (brewery, i) => {
+      return(<SingleBrewery key={i} brewery={brewery} />)
     });
   }
 
 
   loadFunc = (e) => {
-    let { beer } = this.props
-    if(e <= beer.pagination.totalPages){
-      this.props.dispatch(getAllBeers(e+1))
+    let { brewery } = this.props
+    if(e <= brewery.pagination.totalPages){
+      this.props.dispatch(getAllBreweries(e+1))
     }else{
       this.setState({hasMore: false})
     }
@@ -32,7 +33,7 @@ class Beers extends React.Component {
 
   render() {
     let { hasMore } = this.state
-    if(this.props.beer.data.length){
+    if(this.props.brewery.data.length){
       return(
         <Container>
           <Grid >
@@ -45,7 +46,7 @@ class Beers extends React.Component {
                     loader={<div className="loader">Loading ...</div>}
                     useWindow={false}
                 >
-                    { this.displayBeers() }
+                    { this.displayBrewery() }
                 </InfiniteScroll>
               </Grid.Row>
             </div>
@@ -61,8 +62,7 @@ class Beers extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  return { beer: state.beers,
-            breweries: state.brewery }
+  return { brewery: state.brewery }
 }
 
-export default connect(mapStateToProps)(Beers);
+export default connect(mapStateToProps)(Brewery);

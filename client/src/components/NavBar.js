@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Menu, Header } from 'semantic-ui-react'
+import { Menu } from 'semantic-ui-react'
 import { Link } from 'react-router-dom'
 import { withRouter } from 'react-router'
 
@@ -21,6 +21,9 @@ class NavBar extends Component {
             </Link>
             <Link to='/beers'>
               <Menu.Item name='Beers' />
+            </Link>
+            <Link to='/breweries'>
+              <Menu.Item name='Breweries' />
             </Link>
           </Menu.Menu>
         </Menu>

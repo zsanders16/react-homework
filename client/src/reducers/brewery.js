@@ -1,10 +1,10 @@
-const brewery = ( state = [], action) => {
+const breweries = ( state = { data: [], pagination: {} }, action) => {
   switch (action.type) {
-    case 'SET_BY_BREWERY':
-      return action.data
+    case 'SET_ALL_BREWERIES':
+      return { data: [...state.data, ...action.data], pagination: action.pagination }
     default:
       return state
   }
 }
 
-export default brewery
+export default breweries
